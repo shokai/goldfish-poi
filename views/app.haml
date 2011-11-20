@@ -1,0 +1,14 @@
+!!! XHTML
+%html
+  %head
+    %title poi
+    :javascript
+      var app_root = "#{app_root}";
+    %script{:type => 'application/javascript', :src => "#{app_root}/js/jquery.js"}
+    %script{:type => 'application/javascript', :src => "http://ubif.org/goldfish/js/goldfish.js"}
+    %script{:type => 'application/javascript', :src => "#{app_root}/js/app.js"}
+  %body
+    %h1 poi
+    %div#action.panel
+      paste <- -> copy
+    %div#result.panel
