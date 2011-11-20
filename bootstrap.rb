@@ -6,6 +6,12 @@ require 'haml'
 require 'yaml'
 require 'json'
 require 'memcached'
+[:models, :controllers].each do |dir|
+  Dir.glob(File.dirname(__FILE__)+"/#{dir}/*.rb").each do |rb|
+    puts "loading #{rb}"
+    require rb
+  end
+end
 
 begin
   @@conf = YAML::load open(File.dirname(__FILE__)+'/config.yaml').read
