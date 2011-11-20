@@ -52,7 +52,7 @@ post '/tag/:tag' do
   if !(@tag =~ /^[a-z\d]+$/)
     status 400
     @mes = 'invalid tag'
-  elsif
+  else
     begin
       @@cache.set(@tag, @data)
       status 200
