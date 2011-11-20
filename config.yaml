@@ -1,5 +1,0 @@
-title : 'scoop'
-memcached : 'localhost:11211'
-
-# clipboard expire
-expire : 600
