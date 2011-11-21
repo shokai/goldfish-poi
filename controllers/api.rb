@@ -28,7 +28,7 @@ post '/tag/:tag/:action' do
     elsif @action =~ /^paste$/i
       begin
         data = @@cache.get(@poi)
-        @@cache.set(@tag, data, @@conf['expire'])
+        @@cache.set("to_#{@tag}", data, @@conf['expire'])
         status 200
         @mes = data
       rescue Memcached::NotFound => e
