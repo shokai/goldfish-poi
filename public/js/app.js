@@ -71,7 +71,7 @@ poi.request = function(action){
             success : function(e){
                 if(action == 'paste'){
                     $('#result').html('pasted');
-                    // goldfish.finish();
+                    goldfish.exit();
                 }
                 else{
                     $('#result').html(e);
