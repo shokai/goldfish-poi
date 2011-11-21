@@ -1,5 +1,6 @@
 *.lock
 *.log
+*.pem
 ~*
 config.yaml
 *#*
