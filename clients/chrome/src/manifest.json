@@ -1,0 +1,32 @@
+{
+  "name":"POI",
+  "description":"send location.href",
+  "version": "0.0.1",
+  "background_page": "background.html",
+  "permissions": ["tabs" ,"http://*/*", "https://*/*"],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_title": "POI",
+    "popup": "popup.html"
+  },
+  "icons": {
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "content_scripts": [
+                      {
+                        "js": [
+                               "main.js"
+                              ],
+                        "css": [
+                                "main.css"
+                               ],
+                        "matches": [
+                                    "http://*/*",
+                                    "https://*/*",
+                                    "ftp://*/*"
+                                   ],
+                        "run_at": "document_start",
+                        "all_frames":false
+                      }]
+}
