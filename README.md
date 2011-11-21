@@ -1,14 +1,6 @@
-goldfish poi
+GoldFish POI
 ============
-copy and paste
-
-
-Install Dependencies
---------------------
-
-    % brew install memcached libmemcached
-    % gem install bundler
-    % bundle install
+real world copy & paste
 
 
 Config
@@ -19,16 +11,10 @@ Config
 edit config.
 
 
-Run Push Server
----------------
+Run Servers
+-----------
+see following directories.
 
-    % ruby workers/push-server.rb -help
-    % ruby workers/push-server.rb -p 8932 -timeout 60
+- app-server
+- push-server
 
-
-Run App Server
---------------
-
-    % ruby development.ru
-
-or, use Passenger
