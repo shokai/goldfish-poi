@@ -73,6 +73,11 @@ poi.request = function(action){
                     $('#result').html('pasted');
                     goldfish.exit();
                 }
+                else if(action == 'copy'){
+                    $('#result').html(e);
+                    if(e.match(/^https?:\/\/.+/)) location.href = e;
+
+                }
                 else{
                     $('#result').html(e);
                 }
