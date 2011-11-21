@@ -1,4 +1,4 @@
-title : 'poi'
+title : 'POI'
 memcached : 'localhost:11211'
 
 # clipboard expire

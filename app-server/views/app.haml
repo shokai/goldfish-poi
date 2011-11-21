@@ -1,14 +1,17 @@
 !!! XHTML
 %html
   %head
-    %title poi
+    %title POI
     :javascript
       var app_root = "#{app_root}";
     %script{:type => 'application/javascript', :src => "#{app_root}/js/jquery.js"}
     %script{:type => 'application/javascript', :src => "http://ubif.org/goldfish/js/goldfish.js"}
     %script{:type => 'application/javascript', :src => "#{app_root}/js/app.js"}
+    %link{:rel => 'stylesheet', :href => "#{app_root}/css/app.css", :type => 'text/css'}
   %body
-    %h1 poi
-    %div#action.panel
-      paste <- -> copy
-    %div#result.panel
+    %div#main
+      %h1 POI
+      %div#action.panel
+        %img{:src => "#{app_root}/img/poi.png", :width => '320', :height => '194'}
+        %h2= "<< paste&nbsp;&nbsp;&nbsp;copy >>"
+      %div#result.panel
