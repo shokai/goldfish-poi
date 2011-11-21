@@ -14,7 +14,7 @@ require 'memcached'
 end
 
 begin
-  @@conf = YAML::load open(File.dirname(__FILE__)+'/config.yaml').read
+  @@conf = YAML::load open(File.dirname(__FILE__)+'/../config.yaml').read
   p @@conf
 rescue => e
   STDERR.puts 'config.yaml load error!'
