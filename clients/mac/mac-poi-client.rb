@@ -29,7 +29,6 @@ EM::run do
       begin
         res = Net::HTTP.start(uri.host, uri.port).get(uri.path)
       rescue StandardError, Timeout::Error => e
-        STDERR.puts e
         next
       end
       puts "GET code:#{res.code}"
