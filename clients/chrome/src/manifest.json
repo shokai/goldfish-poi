@@ -1,6 +1,6 @@
 {
   "name":"POI",
-  "description":"send location.href",
+  "description":"POI client",
   "version": "0.0.1",
   "background_page": "background.html",
   "permissions": ["tabs" ,"http://*/*", "https://*/*"],
