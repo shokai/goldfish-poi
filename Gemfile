@@ -7,3 +7,8 @@ gem 'sinatra-reloader'
 gem 'json'
 gem 'haml'
 gem 'memcached'
+gem 'eventmachine'
+gem 'ArgsParser'
+gem 'eventmachine_httpserver'
+gem 'memcached'
+
