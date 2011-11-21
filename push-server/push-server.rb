@@ -37,7 +37,6 @@ if parser.has_option(:help)
 end
 
 @@timeout = params[:timeout].to_i
-@@clients = Array.new # comet待ちしているtagで管理する
 
 class PoiPushServer < EventMachine::Connection
   include EventMachine::HttpServer
@@ -56,30 +55,22 @@ class PoiPushServer < EventMachine::Connection
       res.content = data
       res.send_response
     elsif @http_request_method == 'GET'
-      if @@clients.include? tag
-        res.status = 400
-        res.content = ''
-        res.send_response
-      else
-        @@clients << tag
-        EM::defer do
-          data = nil
-          @@timeout.times do ## keep connection
-            begin
-              data = @@m.get("to_#{tag}")
-              break if data.to_s.size > 0
-            rescue Memcached::NotFound => e
-            end
-            sleep 1
+      EM::defer do
+        data = nil
+        @@timeout.times do ## keep connection
+          begin
+            data = @@m.get("to_#{tag}")
+            break if data.to_s.size > 0
+          rescue Memcached::NotFound => e
           end
-          puts "tag:#{tag} <= \"#{data}\""
-          @@clients.delete tag
-          @@m.delete("to_#{tag}")
-          @@m.set(tag, data, @@conf['expire']) if data.to_s.size > 0
-          res.status = 200
-          res.content = data
-          res.send_response
+          sleep 1
         end
+        puts "tag:#{tag} <= \"#{data}\""
+        @@m.delete("to_#{tag}")
+        @@m.set(tag, data, @@conf['expire']) if data.to_s.size > 0
+        res.status = 200
+        res.content = data
+        res.send_response
       end
     end
   end
