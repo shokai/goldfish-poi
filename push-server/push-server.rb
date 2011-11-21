@@ -63,6 +63,7 @@ class PoiPushServer < EventMachine::Connection
       else
         @@clients << tag
         EM::defer do
+          data = nil
           @@timeout.times do ## keep connection
             begin
               data = @@m.get("to_#{tag}")
@@ -71,10 +72,10 @@ class PoiPushServer < EventMachine::Connection
             end
             sleep 1
           end
-          puts "tag:#{tag} <= #{data}"
+          puts "tag:#{tag} <= \"#{data}\""
           @@clients.delete tag
           @@m.delete("to_#{tag}")
-          @@m.set(tag, data, @@conf['expire'])
+          @@m.set(tag, data, @@conf['expire']) if data.to_s.size > 0
           res.status = 200
           res.content = data
           res.send_response
