@@ -8,6 +8,8 @@ require 'memcached'
 require 'yaml'
 require 'ArgsParser'
 
+puts Time.now
+
 begin
   @@conf = YAML::load open(File.dirname(__FILE__)+'/../config.yaml').read
   p @@conf
@@ -50,7 +52,7 @@ class PoiPushServer < EventMachine::Connection
     tag = @http_path_info.gsub(/^\//,'').strip
     if @http_request_method == 'POST'
       data = @http_post_content
-      @@m.set(tag, data, @@conf['expire'])
+      @@m.set(tag, data, @@conf['expire']) if data.to_s.size > 0
       res.status = 200
       res.content = data
       res.send_response
@@ -66,8 +68,8 @@ class PoiPushServer < EventMachine::Connection
           sleep 1
         end
         puts "tag:#{tag} <= \"#{data}\""
-        @@m.delete("to_#{tag}")
-        @@m.set(tag, data, @@conf['expire']) if data.to_s.size > 0
+        @@m.set(tag, data, @@conf['expire']) if data.to_s.size > 0 rescue Memcached::NotFound
+        @@m.delete("to_#{tag}") rescue Memcached::NotFound
         res.status = 200
         res.content = data
         res.send_response
