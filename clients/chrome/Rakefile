@@ -5,6 +5,9 @@ desc 'make chrome extension'
 task 'crxmake' do
   pkg_dir = File.dirname(__FILE__)+'/package'
   Dir.mkdir(pkg_dir) unless File.exists?(pkg_dir)
+  Dir.glob("#{pkg_dir}/*").each do |f|
+    File.delete(f)
+  end
   # create crx
   CrxMake.make(
                :ex_dir => "./src",
