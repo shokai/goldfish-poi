@@ -5,9 +5,10 @@ build
 -----
 
     % gem install crxmake rake
-    % crxmake
+    % rake -T
+    % rake package
 
 install
 -------
 
-    % open package/goldfish.crx
+    % open package/poi.crx

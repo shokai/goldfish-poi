@@ -1,17 +1,20 @@
 require 'rubygems'
 require 'crxmake'
 
+pkg_dir = File.dirname(__FILE__)+'/package'
+key = ENV['CRX_KEY']
+
 desc 'make chrome extension'
-task 'crxmake' do
-  pkg_dir = File.dirname(__FILE__)+'/package'
+task 'package' do
   Dir.mkdir(pkg_dir) unless File.exists?(pkg_dir)
   Dir.glob("#{pkg_dir}/*").each do |f|
     File.delete(f)
   end
+
   # create crx
   CrxMake.make(
                :ex_dir => "./src",
-               #:pkey   => "./src.pem",
+               :pkey => key,
                :crx_output => "#{pkg_dir}/poi.crx",
                :verbose => true,
                :ignorefile => /\.swp/,
@@ -21,7 +24,7 @@ task 'crxmake' do
   # create zip for Google Extension Gallery
   CrxMake.zip(
               :ex_dir => "./src",
-              #:pkey   => "./src.pem",
+              :pkey => key,
               :zip_output => "#{pkg_dir}/poi.zip",
               :verbose => true,
               :ignorefile => /\.swp/,
@@ -29,4 +32,4 @@ task 'crxmake' do
               )
 end
 
-task :default => [:crxmake]
+task :default => [:package]
