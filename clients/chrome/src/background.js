@@ -11,11 +11,23 @@ chrome.self.onConnect.addListener(
     function(port, name){
         port.onMessage.addListener(
             function(info, con){
-	            xhr = new XMLHttpRequest();
-	            xhr.open("POST", api_url+"/"+localStorage.nfc_tag, true);
-	            xhr.setRequestHeader("Content-Type" , "application/x-www-form-urlencoded");
-	            xhr.send(info.url);
-	            port.postMessage({url:info.url});
+                var url = api_url+"/"+localStorage.nfc_tag;
+                console.log("post API : "+url+", data : "+info.url);
+                $.ajax(
+                    {
+                        url : url,
+                        data : info.url,
+                        success : function(data){
+                            console.log("URL post success : "+data);
+                        },
+                        error : function(e){
+                            console.log('URL post error');
+                        },
+                        type : 'POST',
+                        dataType : 'text'
+                    }
+                );
+	            // port.postMessage({url:info.url});
             }
         );
     }
