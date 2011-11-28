@@ -14,7 +14,7 @@ task 'package' do
   # create crx
   CrxMake.make(
                :ex_dir => "./src",
-               :pkey => key,
+               # :pkey => key,
                :crx_output => "#{pkg_dir}/poi.crx",
                :verbose => true,
                :ignorefile => /\.swp/,
@@ -24,7 +24,7 @@ task 'package' do
   # create zip for Google Extension Gallery
   CrxMake.zip(
               :ex_dir => "./src",
-              :pkey => key,
+              # :pkey => key,
               :zip_output => "#{pkg_dir}/poi.zip",
               :verbose => true,
               :ignorefile => /\.swp/,
