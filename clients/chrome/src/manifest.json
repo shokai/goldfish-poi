@@ -1,7 +1,7 @@
 {
     "name":"GoldFish POI",
     "description":"GoldFish POI",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "background_page": "background.html",
     "options_page": "options.html",
     "permissions": ["tabs" ,"http://*/*", "https://*/*"],

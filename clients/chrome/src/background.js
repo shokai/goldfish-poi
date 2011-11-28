@@ -47,17 +47,18 @@ var comet_get = function(){
                     }
                 }
                 else{
-                    console.log('comet error : received data null');
+                    console.log('comet error : received data is null');
                 }
             },
-            error : function(e){
-                console.log('comet error');
+            error : function(req, stat, e){
+                console.log('comet error('+stat+')');
             },
             complete : function(e){
                 comet_get();
             },
             type : 'GET',
-            dataType : 'text'
+            dataType : 'text',
+            timeout : 60000
         }
     );
 };
