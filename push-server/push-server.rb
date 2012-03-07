@@ -34,7 +34,7 @@ parser.bind(:help, :h, 'show help')
 first, params = parser.parse ARGV
 if parser.has_option(:help)
   puts parser.help
-  puts "e.g.  ruby comet-server.rb -port 8932 -timeout 60"
+  puts "e.g.  ruby #{$0} -port 8932 -timeout 60"
   exit 1
 end
 

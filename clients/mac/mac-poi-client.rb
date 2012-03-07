@@ -14,7 +14,7 @@ first, params = parser.parse(ARGV)
 
 if parser.has_option(:help) or !parser.has_params([:tag])
   puts parser.help
-  puts 'e.g.  ruby mac-poi-client.rb -tag a1bcd234 -api "http://ubif.org:8932"'
+  puts "e.g.  ruby #{$0} -tag a1bcd234 -api 'http://ubif.org:8932'"
   exit 1
 end
 
