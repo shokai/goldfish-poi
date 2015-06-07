@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 ## POIのpush配信するサーバー
 require 'rubygems'
-require 'bundler/setup'
 require 'eventmachine'
 require 'evma_httpserver'
 require 'memcached'

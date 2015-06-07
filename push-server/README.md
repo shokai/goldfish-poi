@@ -17,8 +17,8 @@ install
 Run Push Server
 ---------------
 
-    % ruby push-server.rb -help
-    % ruby push-server.rb -p 8932 -timeout 60
+    % bundle exec ruby push-server.rb -help
+    % bundle exec ruby push-server.rb -p 8932 -timeout 60
 
 API
 ---

@@ -19,9 +19,13 @@ install
 Run App Server
 --------------
 
-    % ruby development.ru
+    % RACK_ENV=production
+    # or
+    % RACK_ENV=development
 
-or, use Passenger
+    % bundle exec rackup config.ru -p 8931
+
+=> http://localhost:8931
 
 
 API
